@@ -294,15 +294,38 @@
       {%- render 'cart-drawer' -%}
     {%- endif -%}
 
-    {% unless template == "product.backpacks" %}
-      {% sections 'header-group' %}
-    {% endunless  %}
+    {% sections 'header-group' %}
+
+    {% if page.title == nil %}
+      <h2>Hello</h2>
+    {% endif %}
+
+    {% assign testing = 'testing' %}
+    
+    {% if testing != nil %}
+      <p>{{ testing }}</p>
+    {% endif %}
+
+    {% assign my_string = "Hello" %}
+    {% assign my_num = 25 %}
+    {% assign my_bool = true %}
+
+    {% for user in site.users %}
+      {{ user }}
+    {% endfor %}
+
+    <p>{{ my_string }}</p>
+    <p>{{ my_num }}</p>
+
+    {% if my_bool == true %}
+      <p>The value is true</p>
+    {% endif %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
 
-    {% if template.name == 'product' %}
+    {% if template.name != 'product' %}
       {% sections 'footer-group' %}
     {% endif %}
 
